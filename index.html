@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali Meri Hukum Rabia ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #2b080c 0%, #120204 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .font-royal {
+            font-family: 'Great Vibes', cursive;
+        }
+        .font-cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.2);
+        }
+        .gold-text {
+            background: linear-gradient(135deg, #ffe066 0%, #f5af19 50%, #e65c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .diya-glow {
+            filter: drop-shadow(0 0 18px rgba(255, 165, 0, 0.9));
+            animation: flicker 1.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 28px rgba(255, 215, 0, 1)); }
+        }
+        .sparkle-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255, 215, 0, 0.35) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .slide-in {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .gift-box {
+            transition: transform 0.3s ease;
+        }
+        .gift-box:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 relative">
+
+    <div class="sparkle-bg"></div>
+
+    <!-- Soft & Romantic Audio Tune -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-view-443.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Toggle Button -->
+    <button onclick="toggleMusic()" class="fixed top-5 right-5 z-50 bg-amber-500/20 border border-amber-400/40 text-amber-300 p-3 rounded-full backdrop-blur hover:scale-110 transition">
+        <i id="musicIcon" class="fas fa-music text-xl"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 md:p-8 text-center relative z-10 my-6 border-amber-400/40">
+        
+        <!-- Progress Dots (10 Slides) -->
+        <div class="flex justify-center gap-1.5 mb-6 overflow-x-auto py-1" id="dotsContainer"></div>
+
+        <!-- SLIDE 1: Welcome & Light Diya -->
+        <div id="slide1" class="slide-content slide-in space-y-6">
+            <div class="text-6xl diya-glow">🪔</div>
+            <h1 class="text-4xl font-royal gold-text">Shubh Deepavali</h1>
+            <p class="text-amber-100/90 text-sm leading-relaxed">
+                Meri pyari <span class="text-amber-300 font-semibold">Hukum</span>, Rabia... ❤️<br>
+                Aapke bina meri Diwali bilkul adhuri hai. Iss Diwali ko aur roshan banane ke liye neeche diya light karein! 🪔✨
+            </p>
+            <button onclick="nextSlide(2); startMusic(); launchFireworks();" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:brightness-110 transition transform hover:scale-105">
+                Light The Diya 🪔✨
+            </button>
+        </div>
+
+        <!-- SLIDE 2: Romantic Diwali Wishes -->
+        <div id="slide2" class="slide-content hidden space-y-6">
+            <div class="text-5xl animate-bounce">🎇✨</div>
+            <h2 class="text-3xl font-royal text-amber-300">Happy Diwali Meri Hukum ❤️</h2>
+            <p class="text-amber-100/90 text-sm leading-relaxed">
+                Diya ki roshni se bhi zyada roshan aapki muskuraahat hai, meri <span class="bg-amber-500/20 text-amber-300 px-2 py-1 rounded font-semibold">rasmalai</span>! 🍧<br><br>
+                Bhagwan se dua hai ki aapki life hamesha khushiyon aur pyaar se bhari rahe. Aapka <span class="text-amber-300 font-semibold">Sukoon e Qalb</span> hamesha aapke sath hai! 🤝💖
+            </p>
+            <div class="flex gap-4">
+                <button onclick="prevSlide(1)" class="w-1/3 bg-white/10 border border-white/20 text-white py-3 rounded-2xl">
+                    ⬅ Back
+                </button>
+                <button onclick="nextSlide(3)" class="w-2/3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-2xl shadow-md hover:brightness-110">
+                    Aage Dekho ➔
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Cute Rasmalai & Jaan E Maan -->
+        <div id="slide3" class="slide-content hidden space-y-6">
+            <div class="text-6xl">🍧👑</div>
+            <h2 class="text-2xl font-bold font-cursive text-amber-300">Meri Jaan E Maan ❤️</h2>
+            <p class="text-amber-100/90 text-sm leading-relaxed">
+                Rabia, jab se tum meri life me aayi ho na, tab se har ek pal mitha ho gaya hai. 
+                Tum sirf meri partner nahi ho, tum meri sab kuch ho meri pyari <span class="text-amber-300 font-bold">rasmalai</span>! 🥰
+            </p>
+            <div class="flex gap-4">
+                <button onclick="prevSlide(2)" class="w-1/3 bg-white/10 border border-white/20 text-white py-3 rounded-2xl">
+                    ⬅ Back
+                </button>
+                <button onclick="nextSlide(4)" class="w-2/3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-2xl shadow-md hover:brightness-110">
+                    Next Chapter ➔
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Interactive Gift Box Reveal -->
+        <div id="slide4" class="slide-content hidden space-y-6">
+            <div class="text-5xl">🎁✨</div>
+            <h2 class="text-2xl font-bold font-royal text-amber-300">A Special Gift For Hukum 🎁</h2>
+            <p class="text-amber-100/90 text-sm">Rabia, neeche diye gaye Gift Box par click karke ise kholiye! 👇</p>
+            
+            <div onclick="openGift()" class="gift-box cursor-pointer bg-gradient-to-br from-amber-500/20 to-rose-500/20 border-2 border-dashed border-amber-400 p-8 rounded-3xl mx-auto max-w-xs shadow-2xl">
+                <div class="text-7xl animate-pulse">🎁</div>
+                <p class="text-xs text-amber-300 font-semibold mt-3">Tap To Open Letter 💌</p>
+            </div>
+
+            <button onclick="prevSlide(3)" class="w-full bg-white/10 border border-white/20 text-white py-2 rounded-xl">
+                ⬅ Back
+            </button>
+        </div>
+
+        <!-- SLIDE 5: Unlocked Secret Romantic Letter -->
+        <div id="slide5" class="slide-content hidden space-y-6">
+            <div class="text-5xl">💌✨</div>
+            <h2 class="text-2xl font-cursive text-amber-300">Sukoon e Qalb Ka Dil Se Khat 📝</h2>
+            <div class="bg-amber-500/10 border border-amber-400/30 p-4 rounded-2xl text-left text-xs text-amber-100 space-y-3 leading-relaxed">
+                <p><strong>Meri Pyari Rabia (Hukum),</strong></p>
+                <p>Aaj Diwali ke iss paawan mauke par mai aapko batana chahta hu ki mera sabse bada gift aap hi ho. Jab aap muskuraati ho toh meri puri duniya roshan ho jaati hai.</p>
+                <p>Har mushkil me, har khushi me Sukoon e Qalb hamesha aapke sath khada rahega. Happy Diwali Meri Jaan! ❤️</p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="prevSlide(4)" class="w-1/3 bg-white/10 border border-white/20 text-white py-3 rounded-2xl">
+                    ⬅ Back
+                </button>
+                <button onclick="nextSlide(6)" class="w-2/3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-2xl shadow-md hover:brightness-110">
+                    Aage Chalein ➔
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Aapki Favorite Shayari -->
+        <div id="slide6" class="slide-content hidden space-y-6">
+            <div class="text-5xl">📜💖</div>
+            <h2 class="text-2xl font-cursive text-amber-300">Dil Ki Baat...</h2>
+            <div class="bg-amber-500/10 border border-amber-400/20 p-4 rounded-2xl text-center text-xs text-amber-100/90 leading-relaxed italic space-y-2">
+                <p>"Tere jaisa koi mila hi nahi,</p>
+                <p>Kaise milta kahi pe tha hi nahi!</p>
+                <p>Tu jahan tak dikhayi deti hai,</p>
+                <p>Usse aage mai dekhta hi nahi..." ❤️✨</p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="prevSlide(5)" class="w-1/3 bg-white/10 border border-white/20 text-white py-3 rounded-2xl">
+                    ⬅ Back
+                </button>
+                <button onclick="nextSlide(7)" class="w-2/3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-2xl shadow-md hover:brightness-110">
+                    Love Quiz ➔
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Love Quiz Question -->
+        <div id="slide7" class="slide-content hidden space-y-6">
+            <div class="text-5xl">❓💖</div>
+            <h2 class="text-2xl font-bold text-amber-300">Ek Sawal Hukum Se... 🤔</h2>
+            <p class="text-amber-100 text-xs">Aapko kya lagta hai Sukoon e Qalb aapko kitna pyaar karta hai?</p>
+            
+            <div class="grid grid-cols-1 gap-2.5 text-left">
+                <button onclick="selectOption('Bohot Saara 💖')" class="bg-white/10 border border-amber-400/40 hover:bg-amber-500/20 text-amber-200 p-3 rounded-xl text-xs transition">
+                    A) Bohot Saara 💖
+                </button>
+                <button onclick="selectOption('Hadd Se Zyada 🚀💗')" class="bg-white/10 border border-amber-400/40 hover:bg-amber-500/20 text-amber-200 p-3 rounded-xl text-xs transition">
+                    B) Hadd Se Zyada 🚀💗
+                </button>
+                <button onclick="selectOption('Infinitely & Forever ♾️😍')" class="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold p-3 rounded-xl text-xs transition shadow-md">
+                    C) Infinitely & Forever ♾️😍
+                </button>
+            </div>
+            <button onclick="prevSlide(6)" class="w-full bg-white/10 border border-white/20 text-white py-2 rounded-xl">
+                ⬅ Back
+            </button>
+        </div>
+
+        <!-- SLIDE 8: Quiz Answer Recorded -->
+        <div id="slide8" class="slide-content hidden space-y-6">
+            <div class="text-5xl animate-bounce">🎉💍</div>
+            <h2 class="text-2xl font-royal text-amber-300">Answer Recorded!</h2>
+            <div class="bg-amber-500/10 border border-amber-400/30 p-4 rounded-2xl text-left text-xs space-y-2">
+                <p class="text-amber-400 font-bold uppercase">📩 Result For Sukoon e Qalb:</p>
+                <p class="text-white">Aapne Chunna: <span id="chosenAnswer" class="text-amber-300 font-bold underline"></span></p>
+            </div>
+            <p class="text-amber-100/90 text-xs leading-relaxed">
+                Sachi meri rasmalai, mera pyar isse bhi kahi zyada hai! 🥂💖
+            </p>
+            <div class="flex gap-4">
+                <button onclick="prevSlide(7)" class="w-1/3 bg-white/10 border border-white/20 text-white py-3 rounded-2xl">
+                    ⬅ Back
+                </button>
+                <button onclick="nextSlide(9)" class="w-2/3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-2xl shadow-md hover:brightness-110">
+                    Wada Slide ➔
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Beautiful Promise -->
+        <div id="slide9" class="slide-content hidden space-y-6">
+            <div class="text-6xl">🤝✨</div>
+            <h2 class="text-2xl font-royal text-amber-300">Sukoon e Qalb Ka Wada ❤️</h2>
+            <p class="text-amber-100/90 text-sm leading-relaxed">
+                Rabia, mera waada hai ki mai har mod par aapka hath pakad ke chalunga. 
+                Aap meri rasmalai ho aur humesha rahogi! 🌸✨
+            </p>
+            <div class="flex gap-4">
+                <button onclick="prevSlide(8)" class="w-1/3 bg-white/10 border border-white/20 text-white py-3 rounded-2xl">
+                    ⬅ Back
+                </button>
+                <button onclick="nextSlide(10); launchFireworks();" class="w-2/3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-2xl shadow-md hover:brightness-110">
+                    Final Picture Reveal 📸 ➔
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: FINAL REVEAL WITH EMBEDDED HIGH-RES PHOTO -->
+        <div id="slide10" class="slide-content hidden space-y-4">
+            <img src="photo.jpg" alt="" class="mx-auto w-56 h-56 rounded-full object-cover border-4 border-amber-400" style="object-position:center 20%;box-shadow:0 0 40px #ff9f1c,0 0 90px #ff3b5c88">
+
+            <div class="space-y-2">
+                <h2 class="text-2xl md:text-3xl font-royal gold-text" style="line-height:1.4">Sachhhi muchhhhhhhiii<br>I Love You Meri Hukum 😘</h2>
+                <h3 class="text-2xl font-royal gold-text">Happy Diwali 🎇</h3>
+            </div>
+
+            <p class="text-xs text-amber-100/90 leading-relaxed">Forever yours ❤️🪔</p>
+
+            <button onclick="launchFireworks();setTimeout(launchFireworks,400);setTimeout(launchFireworks,800)" class="w-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-semibold py-2.5 rounded-xl">🎆 Patake phodo</button>
+            <button onclick="nextSlide(1)" class="w-full bg-white/10 border border-amber-400/40 text-amber-300 font-semibold py-2.5 rounded-xl hover:bg-white/20">🔁 Replay Full Romantic Journey</button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 10;
+        let isMusicPlaying = false;
+        const audio = document.getElementById('bgMusic');
+
+        function startMusic() {
+            if (!isMusicPlaying) {
+                audio.play().then(() => {
+                    isMusicPlaying = true;
+                    document.getElementById('musicIcon').className = 'fas fa-volume-high text-xl text-amber-300';
+                }).catch(e => console.log('Audio play failed'));
+            }
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audio.pause();
+                document.getElementById('musicIcon').className = 'fas fa-music text-xl text-amber-300';
+            } else {
+                audio.play();
+                document.getElementById('musicIcon').className = 'fas fa-volume-high text-xl text-amber-300';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        function updateDots(slide) {
+            const container = document.getElementById('dotsContainer');
+            container.innerHTML = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = `w-2 h-2 rounded-full transition-all duration-300 flex-shrink-0 ${i === slide ? 'bg-amber-400 w-4' : 'bg-amber-400/30'}`;
+                container.appendChild(dot);
+            }
+        }
+
+        function nextSlide(slide) {
+            for (let i = 1; i <= totalSlides; i++) {
+                const el = document.getElementById('slide' + i);
+                if (i === slide) {
+                    el.classList.remove('hidden');
+                    el.classList.add('slide-in');
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('slide-in');
+                }
+            }
+            updateDots(slide);
+            currentSlide = slide;
+        }
+
+        function prevSlide(slide) {
+            nextSlide(slide);
+        }
+
+        function openGift() {
+            confetti({
+                particleCount: 150,
+                spread: 90,
+                origin: { y: 0.6 },
+                colors: ['#ffd700', '#ff4500', '#ff69b4', '#ffffff']
+            });
+            nextSlide(5);
+        }
+
+        function selectOption(text) {
+            document.getElementById('chosenAnswer').innerText = text;
+            localStorage.setItem("Hukum_Answer", text);
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+            nextSlide(8);
+        }
+
+        function launchFireworks() {
+            confetti({
+                particleCount: 120,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#ffd700', '#ff4500', '#ff69b4', '#ffffff']
+            });
+        }
+
+        // Initialize dots
+        updateDots(1);
+    </script>
+</body>
+</html>
